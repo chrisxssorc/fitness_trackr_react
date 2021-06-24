@@ -1,20 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 
+// import {
+//     BrowserRouter as Router,
+//     Route,
+//     Switch,
+//     Redirect
+// } from 'react-router-dom';
+
 import {
-    BrowserRouter as Router,
-    Route,
-    Switch,
-    Redirect
-} from 'react-router-dom';
+    //Home,
+    //Routines,
+    //MyRoutines,
+    Activities
+} from './components'
 
 const App = () => {
     return (
-        <Router>
-            <div id="App">
-                Fitness Trackr App
-            </div>
-        </Router>
+        <div className="App">
+            Fitness Trackr App
+            <Activities />
+        </div>
     )
 }
 

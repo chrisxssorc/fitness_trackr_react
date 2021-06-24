@@ -66,7 +66,7 @@ export async function fetchActivities() {
     try {
         const response = await fetch(`${BASE_URL}/activities`);
         const activities = await response.json();
-
+        
         return activities;
     } catch (error) {
         throw error;
