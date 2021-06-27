@@ -1,9 +1,10 @@
-export const BASE_URL = 'https://stormy-woodland-16815.herokuapp.com/api';
+//export const BASE_URL = 'https://stormy-woodland-16815.herokuapp.com/api';
+export const BASE_URL = 'https://fitnesstrac-kr.herokuapp.com/api';
 
 // register new user
 export async function registerUser(usernameValue, passwordValue) {
     try {
-        const response = await fetch(`${BASE_URL}/register`, {
+        const response = await fetch(`${BASE_URL}/users/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -14,9 +15,9 @@ export async function registerUser(usernameValue, passwordValue) {
             })
         })
 
-        const {data: {token}} = await response.json();
-
+        const {token} = await response.json();
         localStorage.setItem("token", JSON.stringify(token));
+        return token;
     } catch (error) {
         throw error;
     }
@@ -25,7 +26,7 @@ export async function registerUser(usernameValue, passwordValue) {
 // login existing user
 export async function loginUser(usernameValue, passwordValue) {
     try {
-        const response = await fetch(`${BASE_URL}/login`, {
+        const response = await fetch(`${BASE_URL}/users/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -36,9 +37,9 @@ export async function loginUser(usernameValue, passwordValue) {
             })
         })
 
-        const {data: {token}} = await response.json();
-
+        const {token} = await response.json();
         localStorage.setItem("token", JSON.stringify(token));
+        return token;
     } catch (error) {
         throw error;
     }
@@ -68,6 +69,28 @@ export async function fetchActivities() {
         const activities = await response.json();
         
         return activities;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// submit new activity
+export async function submitNewActivity(token, nameValue, descriptionValue) {
+    try {
+        const response = await fetch(`${BASE_URL}/activities`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({
+                name: nameValue,
+                description: descriptionValue
+            })
+        })
+
+        const activity = await response.json();
+        return activity;
     } catch (error) {
         throw error;
     }

@@ -1,3 +1,162 @@
+/* Home page */
+
+body {
+    background-color: rgb(126, 0, 0);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 2px white;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: white;
+    margin-left: 15px;
+}
+
+#header-tools {
+    display: flex;
+}
+
+#registerForms {
+    display: flex;
+    align-items: center;
+}
+
+#registerForms div {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+#loginForm label {
+    color: white;
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+#registerForm label {
+    color: white;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    background-color: white;
+    color: black;
+    font-size: 1.5em;
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;;
+}
+
+.current-page {
+    background-color: rgb(124, 162, 175);
+}
+
+#intro {
+    background-color: white;
+    color: rgb(95, 5, 5);
+    font-size: 1.5em;
+    width: 40%;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+/* Activity page */
+
+#activity-title {
+    font-size: 2em;
+    text-align: center;
+    color:white;
+    margin: 15px;
+}
+
+#newActivityForm {
+    font-size: 1.5em;
+    margin: 15px;
+}
+
+#newActivityForm form {
+    display: flex;
+    color: white;
+}
+
+#newActivityForm input {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#newActivityForm textarea {
+    margin-right: 10px;
+    width: 25%;
+}
+
+#activityList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+}
+
 #activity {
-    background-color: lightblue;
+    background-color: rgb(231, 231, 231);
+    color: rgb(95, 5, 5);
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+#activity h3 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Routines page */
+
+#routine-title {
+    font-size: 2em;
+    text-align: center;
+    color:white;
+    margin: 15px;
+}
+
+#routines {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#routine {
+    background-color: rgb(231, 231, 231);
+    color: rgb(95, 5, 5);
+    width: 30%;
+    max-height: 40vh;
+    margin: 10px;
+    padding: 10px;
+    overflow: scroll;
+    border-radius: 15px;
+}
+
+#routineActivity {
+    background-color: rgb(202, 202, 202);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
 }
