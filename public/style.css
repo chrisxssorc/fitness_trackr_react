@@ -175,7 +175,7 @@ header nav a {
 #my-routine {
     background-color: rgb(231, 231, 231);
     color: rgb(95, 5, 5);
-    width: 40%;
+    width: 49%;
     max-height: 60vh;
     margin: 10px;
     padding: 10px;
@@ -186,5 +186,17 @@ header nav a {
 #activityOption {
     margin-left: 10px;
     margin-right: 10px;
-    width: 30%;
+    width: 24%;
+}
+
+#countOption {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 7%;
+}
+
+#durationOption {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 7%;
 }

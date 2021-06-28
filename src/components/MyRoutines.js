@@ -94,6 +94,10 @@ const MyRoutines = ({ username, token }) => {
                                         })
                                     }
                                 </select>
+                                <label for="count">Count:</label>
+                                <input type="number" id="countOption" name="count" min="1" max="99"></input>
+                                <label for="duration">Duration:</label>
+                                <input type="number" id="durationOption" name="duration" min="1" max="99"></input>
                                 <button>Submit</button>
                             </form>
                             <h4>Activities for this routine:</h4>

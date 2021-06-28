@@ -120,6 +120,80 @@ export async function submitNewRoutine(token, nameValue, goalValue, isPublic=nul
     }
 }
 
+// update a routine
+export async function updateRoutine(id, nameValue, goalValue, isPublic=null) {
+    try {
+        const response = await fetch(`${BASE_URL}/routines/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                name: nameValue,
+                goal: goalValue,
+                isPublic: isPublic
+            })
+        })
+
+        const routine = await response.json();
+        return routine;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// delete a routine
+export async function deleteRoutine(id, token) {
+    try {
+        const response = await fetch(`${BASE_URL}/routines/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            }
+        })
+
+        const routine = await response.json();
+        return routine;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// add an activity to a routine
+export async function addActivityToRoutine(routineId, activityId, countValue, durationValue) {
+    try {
+        const response = await fetch(`${BASE_URL}/routines/${routineId}/activities`, {
+            method: "POST",
+            body: JSON.stringify({
+                activityId: activityId,
+                count: countValue,
+                duration: durationValue
+            })
+        })
+
+        const routineActivity = await response.json();
+        return routineActivity;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// delete activity from routine
+export async function deleteActivityFromRoutine(id, token) {
+    try {
+        const response = await fetch(`${BASE_URL}/routine_activities/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            }
+        })
+
+        const routineActivity = await response.json();
+        return routineActivity;
+    } catch (error) {
+        throw error;
+    }
+}
+
 // fetch all activities
 export async function fetchActivities() {
     try {
