@@ -1,4 +1,4 @@
-/* Home page */
+/* Home page and Navbar */
 
 body {
     background-color: rgb(126, 0, 0);
@@ -159,4 +159,32 @@ header nav a {
     padding: 10px;
     margin: 10px;
     border-radius: 15px;
+}
+
+/* My Routines page */
+
+#isPublicLabel {
+    margin-right: 10px;
+}
+
+#my-routine-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#my-routine {
+    background-color: rgb(231, 231, 231);
+    color: rgb(95, 5, 5);
+    width: 40%;
+    max-height: 60vh;
+    margin: 10px;
+    padding: 10px;
+    overflow: scroll;
+    border-radius: 15px;
+}
+
+#activityOption {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 30%;
 }

@@ -50,6 +50,41 @@ export function logoutUser() {
     localStorage.removeItem("token");
 }
 
+// fetch current user info
+export async function getUser(token) {
+    try {
+        const response = await fetch(`${BASE_URL}/users/me`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            }
+        })
+
+        const data = await response.json();
+        localStorage.setItem("username", JSON.stringify(data.username));
+        return data.username;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// fetch current user's routines
+export async function fetchUserRoutines(username, token) {
+    try {
+        const response = await fetch(`${BASE_URL}/users/${username}/routines`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+        })
+
+        const myRoutines = await response.json();
+        return myRoutines;
+    } catch (error) {
+        throw error;
+    }
+}
+
 // fetch all routines
 export async function fetchRoutines() {
     try {
@@ -57,6 +92,29 @@ export async function fetchRoutines() {
         const routines = await response.json();
 
         return routines;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// submit new routine
+export async function submitNewRoutine(token, nameValue, goalValue, isPublic=null) {
+    try {
+        const response = await fetch(`${BASE_URL}/routines`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({
+                name: nameValue,
+                goal: goalValue,
+                isPublic: isPublic
+            })
+        })
+
+        const routine = await response.json();
+        return routine;
     } catch (error) {
         throw error;
     }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { registerUser, loginUser, logoutUser } from '../api';
+import { registerUser, loginUser, getUser, logoutUser } from '../api';
 
-const Home = ({token, setToken}) => {
+const Home = ({token, setToken, setUsername}) => {
     const [newUsername, setNewUsername] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
@@ -11,6 +11,8 @@ const Home = ({token, setToken}) => {
         try {
             const newToken = await registerUser(newUsername, newPassword);
             setToken(newToken);
+            const newUser = await getUser(newToken);
+            setUsername(newUser);
         } catch (error) {
             throw error;
         }
@@ -19,8 +21,9 @@ const Home = ({token, setToken}) => {
     const logInHandler = async () => {
         try {
             const newToken = await loginUser(newUsername, newPassword);
-            console.log(newToken)
             setToken(newToken);
+            const newUser = await getUser(newToken);
+            setUsername(newUser);
         } catch (error) {
             throw error;
         }
@@ -28,7 +31,7 @@ const Home = ({token, setToken}) => {
     
     const logOutHandler = () => {
         logoutUser();
-        setToken(null);
+        setToken('');
     }
 
     return (

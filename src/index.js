@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom';
 import {
     BrowserRouter as Router,
     Route,
-    Switch,
-    Redirect
+    Switch
 } from 'react-router-dom';
 
 import {
@@ -16,14 +15,17 @@ import {
 } from './components'
 
 const App = () => {
-    const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")))
+    const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
+    const [username, setUsername] = useState(JSON.parse(localStorage.getItem("username")));
 
     return (
         <Router>
             <div className="App">
                 <Home 
                     token = {token}
-                    setToken = {setToken} />
+                    setToken = {setToken}
+                    username = {username}
+                    setUsername = {setUsername} />
                 <Switch>
                     <Route exact path="/home">
                         <p id="intro">
@@ -35,7 +37,8 @@ const App = () => {
                     </Route>
                     {token
                         ? <Route path="/myroutines">
-                            <MyRoutines 
+                            <MyRoutines
+                                username = {username}
                                 token = {token} />
                         </Route>
                         : ''
