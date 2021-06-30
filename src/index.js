@@ -26,7 +26,6 @@ const App = () => {
                     setToken = {setToken}
                     username = {username}
                     setUsername = {setUsername} />
-                    
                 <Switch>
                     <Route exact path="/home">
                         <p id="intro">

@@ -121,14 +121,17 @@ export async function submitNewRoutine(token, nameValue, goalValue, isPublic=nul
 }
 
 // update a routine
-export async function updateRoutine(id, nameValue, goalValue, isPublic=null) {
+export async function updateRoutine(id, nameValue, goalValue, token) {
     try {
         const response = await fetch(`${BASE_URL}/routines/${id}`, {
             method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
             body: JSON.stringify({
                 name: nameValue,
                 goal: goalValue,
-                isPublic: isPublic
             })
         })
 
@@ -158,12 +161,15 @@ export async function deleteRoutine(id, token) {
 }
 
 // add an activity to a routine
-export async function addActivityToRoutine(routineId, activityId, countValue, durationValue) {
+export async function addActivityToRoutine(routineId, activityIdValue, countValue, durationValue) {
     try {
         const response = await fetch(`${BASE_URL}/routines/${routineId}/activities`, {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify({
-                activityId: activityId,
+                activityId: activityIdValue,
                 count: countValue,
                 duration: durationValue
             })

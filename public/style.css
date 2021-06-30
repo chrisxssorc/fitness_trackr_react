@@ -167,6 +167,10 @@ header nav a {
     margin-right: 10px;
 }
 
+#full-routine-element {
+    display: flex;
+}
+
 #my-routine-list {
     display: flex;
     flex-direction: column;
@@ -199,4 +203,42 @@ header nav a {
     margin-left: 10px;
     margin-right: 10px;
     width: 7%;
+}
+
+#routine-update-form {
+    background-color: rgb(231, 231, 231);
+    color: rgb(95, 5, 5);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 30%;
+    height: 180px;
+}
+
+.update-routine {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-routine-element {
+    margin-bottom: 10px;
+}
+
+.update-routine-element textarea {
+    height: 60px;
+}
+
+#delete-routine {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(231, 231, 231);
+    color: rgb(95, 5, 5);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    height: 180px;
+}
+
+#delete-routine label {
+    margin-bottom: 20px;
 }
