@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { fetchUserRoutines, submitNewRoutine, fetchActivities, 
-    addActivityToRoutine, deleteActivityFromRoutine,
+    addActivityToRoutine, updateActivity, deleteActivityFromRoutine,
     updateRoutine, deleteRoutine } from '../api';
 
 const MyRoutines = ({ username, token }) => {
@@ -49,6 +49,13 @@ const MyRoutines = ({ username, token }) => {
         const deletedActivity = await deleteActivityFromRoutine(activityId, token);
 
         activityList.pop(deletedActivity);
+        setActivityList(activityList);
+    }
+
+    const handleUpdateActivity = async () => {
+        const updatedActivity = await updateActivity(activityId, countValue, durationValue, token);
+
+        activityList.push(updatedActivity);
         setActivityList(activityList);
     }
 
@@ -152,8 +159,8 @@ const MyRoutines = ({ username, token }) => {
                                 {routine.activities
                                 ? routine.activities.map((activity) => {
                                     return (
-                                        <div id="my-routineActivity">
-                                            <div id="activity">
+                                        <div className="myRoutineActivity" id="routineActivity">
+                                            <div>
                                                 <h3>{activity.name}</h3>
                                                 <p>{activity.description}</p>
                                                 <p>Duration: {activity.duration} | Count: {activity.count}</p>
@@ -164,7 +171,24 @@ const MyRoutines = ({ username, token }) => {
                                                 }}>Delete</button>
                                             </div>
                                             <div id="activity-update">
-                                                
+                                                <h3>Edit this activity:</h3>
+                                                <form id={activity.routineActivityId} onSubmit={(event)=>{
+                                                    event.preventDefault();
+                                                    setActivityId(event.target.id);
+                                                    handleUpdateActivity();
+                                                }}>
+                                                    <label for="count">New Count:</label>
+                                                    <input type="number" id="newCountOption" name="count" min="1" max="99" onChange={(event)=>{
+                                                        event.preventDefault();
+                                                        setCountValue(event.target.value);
+                                                    }}></input>
+                                                    <label for="duration">New Duration:</label>
+                                                    <input type="number" id="newDurationOption" name="duration" min="1" max="99" onChange={(event)=>{
+                                                        event.preventDefault();
+                                                        setDurationValue(event.target.value);
+                                                    }}></input>
+                                                    <button>Submit Edits</button>
+                                                </form>
                                             </div>
                                         </div>
                                     )

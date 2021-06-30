@@ -187,10 +187,33 @@ header nav a {
     border-radius: 15px;
 }
 
+.myRoutineActivity {
+    display: flex;
+    justify-content: space-between;
+}
+
+#activity-update form {
+    display: flex;
+    padding: 5px;
+    margin-top: 20px;
+}
+
 #activityOption {
     margin-left: 10px;
     margin-right: 10px;
     width: 24%;
+}
+
+#newCountOption {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 12%;
+}
+
+#newDurationOption {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 12%;
 }
 
 #countOption {

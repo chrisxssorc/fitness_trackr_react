@@ -233,3 +233,25 @@ export async function submitNewActivity(token, nameValue, descriptionValue) {
         throw error;
     }
 }
+
+// update an activity
+export async function updateActivity(id, countValue, durationValue, token) {
+    try {
+        const response = await fetch(`${BASE_URL}/routine_activities/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({
+                count: countValue,
+                duration: durationValue
+            })
+        })
+
+        const activity = await response.json();
+        return activity;
+    } catch (error) {
+        throw error;
+    }
+}
